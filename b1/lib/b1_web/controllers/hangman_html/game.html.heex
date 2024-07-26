@@ -1,0 +1,21 @@
+<pre>
+    <%= figure_for(@tally.turns_left) %>
+</pre>
+
+
+<p>
+    Letters used: <%= @tally.used |> Enum.join(", ") %>
+</p>
+<p>
+    Word so far: <%= @tally.letters |> Enum.join(" ") %>
+</p>
+
+<%!-- <%= form_for(@conn, Routes.hangman_path(@conn, :update), [ as: "make_move", method: :put ], fn f -> %>
+    <%= text_input(f, :guess) %>
+    <%= submit("Make next guess") %>
+<% end) %> --%>
+
+<.form :let={f} for={%{}} action={~p"/hangman"} method="put" as="make_move">
+  <.input type="text" field={f[:guess]} />
+  <.button type="submit">Make next guess</.button>
+</.form>
